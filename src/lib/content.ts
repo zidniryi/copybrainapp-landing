@@ -123,7 +123,7 @@ export const timelineToday: TimelineEntry[] = [
   { time: "08:21", content: "npm install", category: "Code" },
   { time: "08:35", content: "Bearer eyJhbGciOiJIUzI1NiIs...", category: "JWT" },
   { time: "09:01", content: "useCopyBrainHistory()", category: "Code" },
-  { time: "10:20", content: "meet.copybrainapp.space/standup", category: "URL" },
+  { time: "10:20", content: "meet.copybrainapp.xyz/standup", category: "URL" },
   { time: "12:55", content: "github.com/copybrainapp/core", category: "URL" },
 ];
 

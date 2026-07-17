@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +32,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled || open
-          ? "border-b border-white/10 bg-[#09090b]/80 backdrop-blur-md"
+          ? "border-b border-border bg-background/80 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       )}
     >
@@ -46,7 +47,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -54,6 +55,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           <Button
             asChild
             className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08)] hover:opacity-90"
@@ -62,22 +64,25 @@ export function Navbar() {
           </Button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-white/80 md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-md p-2 text-foreground/80"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       {open ? (
         <div
           id="mobile-nav"
-          className="border-t border-white/10 bg-[#09090b]/95 px-6 py-6 backdrop-blur-md md:hidden"
+          className="border-t border-border bg-background/95 px-6 py-6 backdrop-blur-md md:hidden"
         >
           <div className="flex flex-col gap-5">
             {siteConfig.nav.map((item) => (
@@ -85,7 +90,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium text-white/80 hover:text-white"
+                className="text-base font-medium text-foreground/80 hover:text-foreground"
               >
                 {item.label}
               </Link>

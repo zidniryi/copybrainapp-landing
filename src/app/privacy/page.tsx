@@ -110,14 +110,14 @@ export default function PrivacyPage() {
             <p>
               Questions about this policy can be sent to{" "}
               <a
-                className="text-white underline underline-offset-4"
+                className="text-foreground underline underline-offset-4"
                 href={`mailto:${siteConfig.email.hello}`}
               >
                 {siteConfig.email.hello}
               </a>
               . Security-related reports can be sent to{" "}
               <a
-                className="text-white underline underline-offset-4"
+                className="text-foreground underline underline-offset-4"
                 href={`mailto:${siteConfig.email.security}`}
               >
                 {siteConfig.email.security}

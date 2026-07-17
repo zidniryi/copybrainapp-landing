@@ -17,20 +17,20 @@ export function TestimonialsSection() {
         <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
             <RevealItem key={t.name}>
-              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <figure className="flex h-full flex-col rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-6">
                 <Quote className="size-5 text-[#7C3AED]" />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-white/70">
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/70">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] text-xs font-semibold text-white">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] text-xs font-semibold text-foreground">
                     {t.initials}
                   </span>
                   <div>
-                    <div className="text-sm font-medium text-white">
+                    <div className="text-sm font-medium text-foreground">
                       {t.name}
                     </div>
-                    <div className="text-xs text-white/55">{t.role}</div>
+                    <div className="text-xs text-foreground/55">{t.role}</div>
                   </div>
                 </figcaption>
               </figure>

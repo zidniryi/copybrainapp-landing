@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "CopyBrain",
-  url: "https://copybrainapp.space",
+  url: "https://copybrainapp.xyz",
   tagline: "Your second brain for everything you copy.",
   description:
     "CopyBrain automatically remembers everything you copy and organizes it into a searchable timeline.",
@@ -10,6 +10,7 @@ export const siteConfig = {
     security: "zidniryi123@gmail.com",
   },
   nav: [
+    { label: "Demo", href: "/#demo" },
     { label: "Features", href: "/#features" },
     { label: "Timeline", href: "/#timeline" },
     { label: "Pricing", href: "/#pricing" },

@@ -2,7 +2,7 @@
 
 Website
 
-https://copybrainapp.space
+https://copybrainapp.xyz
 
 Tagline
 
@@ -37,3 +37,11 @@ Offline First
 Encrypted Database
 
 Cross Platform
+
+Security & Privacy
+
+100% Offline First — no cloud sync required
+End-to-End Encrypted Local Database
+Your Clipboard Data Never Leaves Your Device
+No Account, No Telemetry, No Tracking
+Safe for API Keys, Secrets, and LLM Prompts

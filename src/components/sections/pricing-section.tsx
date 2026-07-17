@@ -24,35 +24,35 @@ export function PricingSection() {
                 className={cn(
                   "relative flex h-full flex-col rounded-2xl border p-8",
                   plan.featured
-                    ? "border-[#4F46E5]/50 bg-gradient-to-b from-[#4F46E5]/10 via-white/[0.03] to-transparent shadow-[0_0_0_1px_rgba(79,70,229,0.25)]"
-                    : "border-white/10 bg-white/[0.03]"
+                    ? "border-[#4F46E5]/50 bg-gradient-to-b from-[#4F46E5]/10 via-foreground/[0.03] to-transparent shadow-[0_0_0_1px_rgba(79,70,229,0.25)]"
+                    : "border-foreground/10 bg-foreground/[0.03]"
                 )}
               >
                 {plan.comingSoon ? (
-                  <span className="absolute -top-3 left-8 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-white">
+                  <span className="absolute -top-3 left-8 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-primary-foreground">
                     <Clock className="size-3" />
                     Coming soon
                   </span>
                 ) : plan.featured ? (
-                  <span className="absolute -top-3 left-8 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-white">
+                  <span className="absolute -top-3 left-8 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-primary-foreground">
                     Most popular
                   </span>
                 ) : null}
 
-                <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
-                <p className="mt-2 text-sm text-white/50">{plan.description}</p>
+                <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
+                <p className="mt-2 text-sm text-foreground/50">{plan.description}</p>
 
                 <div className="mt-6 flex items-baseline gap-1">
                   <span
                     className={cn(
-                      "text-4xl font-bold tracking-tight text-white",
-                      plan.comingSoon && "text-white/40"
+                      "text-4xl font-bold tracking-tight text-foreground",
+                      plan.comingSoon && "text-foreground/40"
                     )}
                   >
                     {plan.price}
                   </span>
                   {plan.period ? (
-                    <span className="text-sm text-white/55">{plan.period}</span>
+                    <span className="text-sm text-foreground/55">{plan.period}</span>
                   ) : null}
                 </div>
 
@@ -61,7 +61,7 @@ export function PricingSection() {
                     size="lg"
                     disabled
                     aria-disabled="true"
-                    className="mt-6 w-full cursor-not-allowed border border-white/10 bg-white/5 text-white/50 opacity-100 hover:bg-white/5 disabled:opacity-100"
+                    className="mt-6 w-full cursor-not-allowed border border-foreground/10 bg-foreground/5 text-foreground/50 opacity-100 hover:bg-foreground/5 disabled:opacity-100"
                   >
                     <Clock className="size-4" />
                     {plan.cta}
@@ -73,8 +73,8 @@ export function PricingSection() {
                     className={cn(
                       "mt-6 w-full",
                       plan.featured
-                        ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white hover:opacity-90"
-                        : "border-white/15 bg-white/5 text-white hover:bg-white/10"
+                        ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+                        : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
                     )}
                     variant={plan.featured ? "default" : "outline"}
                   >
@@ -83,7 +83,7 @@ export function PricingSection() {
                 )}
 
                 {plan.comingSoon ? (
-                  <p className="mt-3 text-center text-xs text-white/35">
+                  <p className="mt-3 text-center text-xs text-foreground/35">
                     Pro is in development — pricing shown is planned, not final.
                   </p>
                 ) : null}
@@ -94,7 +94,7 @@ export function PricingSection() {
                       key={f}
                       className={cn(
                         "flex items-start gap-2.5 text-sm",
-                        plan.comingSoon ? "text-white/50" : "text-white/70"
+                        plan.comingSoon ? "text-foreground/50" : "text-foreground/70"
                       )}
                     >
                       <Check

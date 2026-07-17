@@ -16,13 +16,13 @@ export function LegalHero({
       <Glow className="mask-fade-radial opacity-70" />
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <Reveal>
-          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+          <span className="inline-flex items-center rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/70">
             {eyebrow}
           </span>
-          <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
             {title}
           </h1>
-          <p className="mt-4 text-sm text-white/55">Last updated: {updated}</p>
+          <p className="mt-4 text-sm text-foreground/55">Last updated: {updated}</p>
         </Reveal>
       </div>
     </section>
@@ -48,8 +48,8 @@ export function LegalSection({
 }) {
   return (
     <div>
-      <h2 className="text-xl font-semibold text-white">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-white/60">
+      <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-foreground/60">
         {children}
       </div>
     </div>

@@ -33,17 +33,17 @@ export function DownloadSection({
               <RevealItem key={platform.id}>
                 <div
                   id={platform.id}
-                  className="group relative flex h-full scroll-mt-28 flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
+                  className="group relative flex h-full scroll-mt-28 flex-col rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-7 transition-colors hover:border-foreground/20 hover:bg-foreground/[0.05]"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#4F46E5]/20 to-[#7C3AED]/20">
-                      <Icon className="size-5 text-white" />
+                    <span className="flex size-11 items-center justify-center rounded-xl border border-foreground/10 bg-gradient-to-br from-[#4F46E5]/20 to-[#7C3AED]/20">
+                      <Icon className="size-5 text-foreground" />
                     </span>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-foreground">
                         {platform.name}
                       </h3>
-                      <p className="text-xs text-white/55">
+                      <p className="text-xs text-foreground/55">
                         v{platform.version} · {platform.size}
                       </p>
                     </div>
@@ -53,7 +53,7 @@ export function DownloadSection({
                     {platform.supports.map((s) => (
                       <li
                         key={s}
-                        className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/60"
+                        className="inline-flex items-center gap-1 rounded-full border border-foreground/10 bg-foreground/5 px-2.5 py-1 text-[11px] font-medium text-foreground/60"
                       >
                         <Check className="size-3 text-[#06B6D4]" />
                         {s}
@@ -71,8 +71,8 @@ export function DownloadSection({
                         className={cn(
                           "w-full justify-between",
                           asset.primary
-                            ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white hover:opacity-90"
-                            : "border-white/15 bg-white/5 text-white hover:bg-white/10"
+                            ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+                            : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
                         )}
                       >
                         <Link href={asset.href} download>
@@ -80,7 +80,14 @@ export function DownloadSection({
                             <DownloadIcon className="size-4" />
                             {asset.label}
                           </span>
-                          <span className="font-mono text-[11px] font-normal text-white/50 group-hover:text-white/60">
+                          <span
+                            className={cn(
+                              "font-mono text-[11px] font-normal",
+                              asset.primary
+                                ? "text-primary-foreground/70 group-hover:text-primary-foreground/90"
+                                : "text-foreground/50 group-hover:text-foreground/60"
+                            )}
+                          >
                             {asset.file}
                           </span>
                         </Link>
@@ -93,7 +100,7 @@ export function DownloadSection({
           })}
         </RevealGroup>
 
-        <Reveal delay={0.15} className="mt-10 text-center text-sm text-white/55">
+        <Reveal delay={0.15} className="mt-10 text-center text-sm text-foreground/55">
           Free forever on the core plan. No account required to download.
         </Reveal>
       </div>

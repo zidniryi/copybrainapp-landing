@@ -22,13 +22,13 @@ export default function DownloadPage() {
           <Glow className="mask-fade-radial" />
           <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
             <Reveal>
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+              <span className="inline-flex items-center rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/70">
                 Free download
               </span>
-              <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
                 Get CopyBrain for your desktop.
               </h1>
-              <p className="mt-5 text-balance text-lg leading-relaxed text-white/60">
+              <p className="mt-5 text-balance text-lg leading-relaxed text-foreground/60">
                 One app, every platform. Pick your operating system below —
                 installation takes less than a minute.
               </p>

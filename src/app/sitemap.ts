@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://copybrainapp.space";
+const SITE_URL = "https://copybrainapp.xyz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

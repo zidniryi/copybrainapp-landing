@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        "flex items-center gap-2.5 font-semibold tracking-tight text-white",
+        "flex items-center gap-2.5 font-semibold tracking-tight text-foreground",
         className
       )}
       aria-label="CopyBrain home"

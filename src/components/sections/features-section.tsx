@@ -20,18 +20,18 @@ export function FeaturesSection() {
               key={feature.title}
               className={cn(feature.span === "lg" ? "lg:col-span-2" : "")}
             >
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/20 hover:bg-white/[0.05]">
-                <span className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#4F46E5]/25 via-[#7C3AED]/20 to-[#06B6D4]/20">
-                  <feature.icon className="size-5 text-white" />
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-6 transition-colors hover:border-foreground/20 hover:bg-foreground/[0.05]">
+                <span className="flex size-10 items-center justify-center rounded-xl border border-foreground/10 bg-gradient-to-br from-[#4F46E5]/25 via-[#7C3AED]/20 to-[#06B6D4]/20">
+                  <feature.icon className="size-5 text-foreground" />
                 </span>
-                <h3 className="mt-5 text-base font-semibold text-white">
+                <h3 className="mt-5 text-base font-semibold text-foreground">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
+                <p className="mt-2 text-sm leading-relaxed text-foreground/55">
                   {feature.description}
                 </p>
                 {feature.detail ? (
-                  <p className="mt-2 text-sm leading-relaxed text-white/55">
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/55">
                     {feature.detail}
                   </p>
                 ) : null}
@@ -41,7 +41,7 @@ export function FeaturesSection() {
                     {smartCategories.map((c) => (
                       <span
                         key={c}
-                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/60"
+                        className="rounded-full border border-foreground/10 bg-foreground/5 px-2.5 py-1 text-[11px] font-medium text-foreground/60"
                       >
                         {c}
                       </span>
@@ -54,7 +54,7 @@ export function FeaturesSection() {
                     {collections.map((c) => (
                       <span
                         key={c}
-                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/60"
+                        className="rounded-full border border-foreground/10 bg-foreground/5 px-2.5 py-1 text-[11px] font-medium text-foreground/60"
                       >
                         {c}
                       </span>
@@ -70,10 +70,10 @@ export function FeaturesSection() {
                       ["<50MB", "Memory"],
                     ].map(([value, label]) => (
                       <div key={label}>
-                        <div className="text-sm font-semibold text-white">
+                        <div className="text-sm font-semibold text-foreground">
                           {value}
                         </div>
-                        <div className="text-[10px] uppercase tracking-wide text-white/55">
+                        <div className="text-[10px] uppercase tracking-wide text-foreground/55">
                           {label}
                         </div>
                       </div>

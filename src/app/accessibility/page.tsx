@@ -61,7 +61,7 @@ export default function AccessibilityPage() {
               If you encounter an accessibility barrier anywhere on this
               site or in the app, please tell us at{" "}
               <a
-                className="text-white underline underline-offset-4"
+                className="text-foreground underline underline-offset-4"
                 href={`mailto:${siteConfig.email.support}`}
               >
                 {siteConfig.email.support}

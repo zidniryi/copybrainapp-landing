@@ -1,4 +1,4 @@
 Contact: mailto:zidniryi123@gmail.com
-Canonical: https://copybrainapp.space/.well-known/security.txt
+Canonical: https://copybrainapp.xyz/.well-known/security.txt
 Preferred-Languages: en
 Expires: 2028-12-31T00:00:00Z

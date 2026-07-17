@@ -114,7 +114,7 @@ export default function TermsPage() {
             <p>
               Questions about these terms can be sent to{" "}
               <a
-                className="text-white underline underline-offset-4"
+                className="text-foreground underline underline-offset-4"
                 href={`mailto:${siteConfig.email.hello}`}
               >
                 {siteConfig.email.hello}

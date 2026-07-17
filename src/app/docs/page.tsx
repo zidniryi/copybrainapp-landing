@@ -26,7 +26,7 @@ export default function DocsPage() {
           <LegalSection title="Installation">
             <p>
               Download the installer for your platform from the{" "}
-              <Link className="text-white underline underline-offset-4" href="/download">
+              <Link className="text-foreground underline underline-offset-4" href="/download">
                 Download page
               </Link>
               . Windows and macOS builds are signed; Linux ships as
@@ -99,13 +99,13 @@ export default function DocsPage() {
             <p>
               Email{" "}
               <a
-                className="text-white underline underline-offset-4"
+                className="text-foreground underline underline-offset-4"
                 href={`mailto:${siteConfig.email.support}`}
               >
                 {siteConfig.email.support}
               </a>{" "}
               or check the{" "}
-              <Link className="text-white underline underline-offset-4" href="/#faq">
+              <Link className="text-foreground underline underline-offset-4" href="/#faq">
                 FAQ
               </Link>
               .
