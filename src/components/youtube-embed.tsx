@@ -1,32 +1,24 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function DemoVideoPlayer({
-  src,
+export function YoutubeEmbed({
+  videoId,
   poster,
-  aspectRatio = "1920 / 1258",
+  title,
+  aspectRatio = "16 / 9",
   className,
 }: {
-  src: string;
+  videoId: string;
   poster: string;
+  title: string;
   aspectRatio?: string;
   className?: string;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
-  const handlePlay = () => {
-    setLoaded(true);
-    setPlaying(true);
-    requestAnimationFrame(() => {
-      videoRef.current?.play();
-    });
-  };
 
   return (
     <div
@@ -37,27 +29,23 @@ export function DemoVideoPlayer({
       style={{ aspectRatio }}
     >
       {loaded ? (
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover"
-          src={src}
-          poster={poster}
-          controls={playing}
-          playsInline
-          preload="none"
-          onPause={() => setPlaying(false)}
-          onEnded={() => setPlaying(false)}
+        <iframe
+          className="h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
       ) : (
         <button
           type="button"
-          onClick={handlePlay}
-          aria-label="Play demo video"
+          onClick={() => setLoaded(true)}
+          aria-label={`Play: ${title}`}
           className="absolute inset-0 h-full w-full cursor-pointer"
         >
           <Image
             src={poster}
-            alt="CopyBrain product demo preview"
+            alt={title}
             fill
             sizes="(min-width: 1024px) 768px, 100vw"
             className="object-cover"
