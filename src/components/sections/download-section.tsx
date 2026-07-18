@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Download as DownloadIcon, Check, Info } from "lucide-react";
+import { Download as DownloadIcon, Check, Info, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,7 +14,7 @@ import {
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { osIcons } from "@/components/icons/os-icons";
-import { downloads, type DownloadAsset } from "@/lib/site-config";
+import { downloads, sourceRelease, type DownloadAsset } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { trackDownload } from "@/lib/gtm";
 
@@ -149,6 +149,41 @@ export function DownloadSection({
 
         <Reveal delay={0.15} className="mt-10 text-center text-sm text-foreground/55">
           Free forever on the core plan. No account required to download.
+        </Reveal>
+
+        <Reveal delay={0.2} className="mt-6">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-6 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <h3 className="flex items-center justify-center gap-2 text-sm font-semibold text-foreground sm:justify-start">
+                <Code2 className="size-4 text-[#06B6D4]" />
+                Prefer to build it yourself?
+              </h3>
+              <p className="mt-1 text-sm text-foreground/55">
+                CopyBrain is open source. Download the source code and build
+                it manually if you&apos;d rather not use the prebuilt
+                installers.
+              </p>
+            </div>
+            <Button
+              asChild
+              variant="outline"
+              className="shrink-0 border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
+            >
+              <Link
+                href={sourceRelease.href}
+                onClick={() =>
+                  trackDownload({
+                    platform: "source",
+                    file: `copybrainapp-releases-${sourceRelease.version}.zip`,
+                    label: "Source code (.zip)",
+                  })
+                }
+              >
+                <DownloadIcon className="size-4" />
+                Source code (v{sourceRelease.version})
+              </Link>
+            </Button>
+          </div>
         </Reveal>
       </div>
 
