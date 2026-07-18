@@ -74,6 +74,7 @@ export const downloads: PlatformDownload[] = [
     supports: ["Apple Silicon", "Intel"],
     version: "1.0.4",
     size: "12.7 MB",
+    note: 'CopyBrain isn\'t notarized by an Apple Developer account yet, so macOS Gatekeeper will block it on first launch. Open System Settings → Privacy & Security and click "Open Anyway" to continue.',
     assets: [
       {
         label: "Download for macOS",

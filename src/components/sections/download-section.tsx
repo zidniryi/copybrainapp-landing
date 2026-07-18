@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { trackDownload } from "@/lib/gtm";
 
 const WINDOWS_HELP_VIDEO_ID = "sppI2ObCctY";
+const MACOS_HELP_VIDEO_ID = "ih5HidIpgzw";
 
 export function DownloadSection({
   showHeading = true,
@@ -28,6 +29,8 @@ export function DownloadSection({
   className?: string;
 }) {
   const [pendingWindowsAsset, setPendingWindowsAsset] =
+    useState<DownloadAsset | null>(null);
+  const [pendingMacAsset, setPendingMacAsset] =
     useState<DownloadAsset | null>(null);
 
   return (
@@ -98,6 +101,11 @@ export function DownloadSection({
                             if (platform.id === "windows") {
                               e.preventDefault();
                               setPendingWindowsAsset(asset);
+                              return;
+                            }
+                            if (platform.id === "macos") {
+                              e.preventDefault();
+                              setPendingMacAsset(asset);
                               return;
                             }
                             trackDownload({
@@ -199,6 +207,68 @@ export function DownloadSection({
               >
                 <DownloadIcon className="size-4" />
                 Continue download — {pendingWindowsAsset.file}
+              </a>
+            </Button>
+          ) : null}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={pendingMacAsset !== null}
+        onOpenChange={(open) => {
+          if (!open) setPendingMacAsset(null);
+        }}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Seeing a &quot;can&apos;t be opened&quot; warning?</DialogTitle>
+            <DialogDescription>
+              CopyBrain isn&apos;t notarized by an Apple Developer account yet,
+              so Gatekeeper will block it on first launch. Here&apos;s a quick
+              walkthrough on how to open it anyway.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div
+            className="overflow-hidden rounded-xl border border-foreground/10"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${MACOS_HELP_VIDEO_ID}`}
+              title="How to install CopyBrain on macOS (Gatekeeper warning)"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+          <p className="flex items-start gap-1.5 text-xs leading-relaxed text-foreground/50">
+            <Info className="mt-0.5 size-3.5 shrink-0" />
+            Open System Settings → Privacy &amp; Security, scroll down, and
+            click &quot;Open Anyway&quot; next to the CopyBrain warning to
+            install.
+          </p>
+
+          {pendingMacAsset ? (
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+            >
+              <a
+                href={pendingMacAsset.href}
+                download
+                onClick={() => {
+                  trackDownload({
+                    platform: "macos",
+                    file: pendingMacAsset.file,
+                    label: pendingMacAsset.label,
+                  });
+                  setPendingMacAsset(null);
+                }}
+              >
+                <DownloadIcon className="size-4" />
+                Continue download — {pendingMacAsset.file}
               </a>
             </Button>
           ) : null}
