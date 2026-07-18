@@ -226,7 +226,7 @@ export function DownloadSection({
             <Button
               asChild
               size="lg"
-              className="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+              className="h-auto min-h-9 w-full items-center whitespace-normal break-words bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] py-2 text-center text-primary-foreground hover:opacity-90"
             >
               <a
                 href={pendingWindowsAsset.href}
@@ -240,7 +240,7 @@ export function DownloadSection({
                   setPendingWindowsAsset(null);
                 }}
               >
-                <DownloadIcon className="size-4" />
+                <DownloadIcon className="size-4 shrink-0" />
                 Continue download — {pendingWindowsAsset.file}
               </a>
             </Button>
@@ -288,7 +288,7 @@ export function DownloadSection({
             <Button
               asChild
               size="lg"
-              className="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+              className="h-auto min-h-9 w-full items-center whitespace-normal break-words bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] py-2 text-center text-primary-foreground hover:opacity-90"
             >
               <a
                 href={pendingMacAsset.href}
@@ -302,7 +302,7 @@ export function DownloadSection({
                   setPendingMacAsset(null);
                 }}
               >
-                <DownloadIcon className="size-4" />
+                <DownloadIcon className="size-4 shrink-0" />
                 Continue download — {pendingMacAsset.file}
               </a>
             </Button>

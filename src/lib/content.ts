@@ -289,7 +289,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Is there a portable version?",
     answer:
-      "Yes. Windows users can download CopyBrain-Portable.zip and run it without installation — perfect for USB drives or locked-down machines.",
+      "Yes. Windows users can download the Portable (.zip) build and run it without installation — perfect for USB drives or locked-down machines.",
   },
   {
     question: "How much RAM does it use?",
