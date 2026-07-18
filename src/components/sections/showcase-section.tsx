@@ -8,9 +8,17 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  type MotionProps,
 } from "framer-motion";
+import { X, ZoomIn } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { osIcons } from "@/components/icons/os-icons";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 type PlatformId = "windows" | "macos" | "linux";
@@ -85,9 +93,15 @@ const platforms: {
 function TiltCard({
   children,
   className,
+  initial,
+  animate,
+  transition,
 }: {
   children: ReactNode;
   className?: string;
+  initial?: MotionProps["initial"];
+  animate?: MotionProps["animate"];
+  transition?: MotionProps["transition"];
 }) {
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
@@ -117,6 +131,9 @@ function TiltCard({
     <motion.div
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
+      initial={initial}
+      animate={animate}
+      transition={transition}
       style={{ rotateX, rotateY, transformPerspective: 1200 }}
       className={cn("group/tilt relative", className)}
     >
@@ -138,6 +155,7 @@ function TiltCard({
 
 export function ShowcaseSection() {
   const [active, setActive] = useState<PlatformId>("macos");
+  const [zoomedShot, setZoomedShot] = useState<Shot | null>(null);
   const activePlatform = platforms.find((p) => p.id === active)!;
 
   return (
@@ -145,7 +163,7 @@ export function ShowcaseSection() {
       id="showcase"
       className="relative overflow-hidden py-24 sm:py-32 scroll-mt-24"
     >
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Cross-platform"
           title="Looks right at home, everywhere."
@@ -193,39 +211,117 @@ export function ShowcaseSection() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -18, scale: 0.97 }}
               transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="grid grid-cols-1 items-start gap-5 lg:grid-cols-5"
+              className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2"
             >
-              <TiltCard className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] lg:col-span-3">
-                <Image
-                  src={activePlatform.primary.src}
-                  alt={activePlatform.primary.alt}
-                  width={activePlatform.primary.width}
-                  height={activePlatform.primary.height}
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  className="h-full w-full object-cover"
-                  priority
-                />
+              <TiltCard
+                initial={{ opacity: 0, x: -28, rotate: -3 }}
+                animate={{ opacity: 1, x: 0, rotate: 0 }}
+                transition={{ duration: 0.5, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setZoomedShot(activePlatform.secondary)}
+                  className="group/zoom relative block w-full cursor-zoom-in"
+                >
+                  <Image
+                    src={activePlatform.secondary.src}
+                    alt={activePlatform.secondary.alt}
+                    width={activePlatform.secondary.width}
+                    height={activePlatform.secondary.height}
+                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover/zoom:bg-black/30 group-hover/zoom:opacity-100">
+                    <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
+                      <ZoomIn className="size-5" />
+                    </span>
+                  </span>
+                </button>
               </TiltCard>
 
-              <motion.div
+              <TiltCard
                 initial={{ opacity: 0, x: 28, rotate: 3 }}
                 animate={{ opacity: 1, x: 0, rotate: 0 }}
                 transition={{ duration: 0.5, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
-                className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)] lg:col-span-2"
+                className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]"
               >
-                <Image
-                  src={activePlatform.secondary.src}
-                  alt={activePlatform.secondary.alt}
-                  width={activePlatform.secondary.width}
-                  height={activePlatform.secondary.height}
-                  sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="h-full w-full object-cover"
-                />
-              </motion.div>
+                <button
+                  type="button"
+                  onClick={() => setZoomedShot(activePlatform.primary)}
+                  className="group/zoom relative block w-full cursor-zoom-in"
+                >
+                  <Image
+                    src={activePlatform.primary.src}
+                    alt={activePlatform.primary.alt}
+                    width={activePlatform.primary.width}
+                    height={activePlatform.primary.height}
+                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    className="h-full w-full object-cover"
+                    priority
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover/zoom:bg-black/30 group-hover/zoom:opacity-100">
+                    <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
+                      <ZoomIn className="size-5" />
+                    </span>
+                  </span>
+                </button>
+              </TiltCard>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+
+      <Dialog
+        open={zoomedShot !== null}
+        onOpenChange={(open) => {
+          if (!open) setZoomedShot(null);
+        }}
+      >
+        <DialogContent
+          showClose={false}
+          className="flex h-[92vh] w-[95vw] max-w-none items-center justify-center border-none bg-transparent p-0 shadow-none sm:h-[94vh] sm:w-[96vw]"
+        >
+          <DialogTitle className="sr-only">
+            {zoomedShot?.alt ?? "CopyBrain screenshot"}
+          </DialogTitle>
+          <motion.div
+            key={zoomedShot?.src}
+            initial={{ opacity: 0, scale: 0.55 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 24 }}
+            className="relative h-full w-full"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                delay: 0.08,
+              }}
+            >
+              <DialogClose className="absolute -top-3 -right-3 z-10 flex size-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none">
+                <X className="size-4" />
+                <span className="sr-only">Close</span>
+              </DialogClose>
+            </motion.div>
+            {zoomedShot ? (
+              <div className="relative h-full w-full overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+                <Image
+                  src={zoomedShot.src}
+                  alt={zoomedShot.alt}
+                  fill
+                  sizes="96vw"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            ) : null}
+          </motion.div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
