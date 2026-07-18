@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, Clock } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
@@ -28,12 +28,7 @@ export function PricingSection() {
                     : "border-foreground/10 bg-foreground/[0.03]"
                 )}
               >
-                {plan.comingSoon ? (
-                  <span className="absolute -top-3 left-8 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-primary-foreground">
-                    <Clock className="size-3" />
-                    Coming soon
-                  </span>
-                ) : plan.featured ? (
+                {plan.featured ? (
                   <span className="absolute -top-3 left-8 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] px-3 py-1 text-xs font-medium text-primary-foreground">
                     Most popular
                   </span>
@@ -43,12 +38,7 @@ export function PricingSection() {
                 <p className="mt-2 text-sm text-foreground/50">{plan.description}</p>
 
                 <div className="mt-6 flex items-baseline gap-1">
-                  <span
-                    className={cn(
-                      "text-4xl font-bold tracking-tight text-foreground",
-                      plan.comingSoon && "text-foreground/40"
-                    )}
-                  >
+                  <span className="text-4xl font-bold tracking-tight text-foreground">
                     {plan.price}
                   </span>
                   {plan.period ? (
@@ -56,53 +46,27 @@ export function PricingSection() {
                   ) : null}
                 </div>
 
-                {plan.comingSoon ? (
-                  <Button
-                    size="lg"
-                    disabled
-                    aria-disabled="true"
-                    className="mt-6 w-full cursor-not-allowed border border-foreground/10 bg-foreground/5 text-foreground/50 opacity-100 hover:bg-foreground/5 disabled:opacity-100"
-                  >
-                    <Clock className="size-4" />
-                    {plan.cta}
-                  </Button>
-                ) : (
-                  <Button
-                    asChild
-                    size="lg"
-                    className={cn(
-                      "mt-6 w-full",
-                      plan.featured
-                        ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
-                        : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
-                    )}
-                    variant={plan.featured ? "default" : "outline"}
-                  >
-                    <Link href={plan.href}>{plan.cta}</Link>
-                  </Button>
-                )}
-
-                {plan.comingSoon ? (
-                  <p className="mt-3 text-center text-xs text-foreground/35">
-                    Pro is in development — pricing shown is planned, not final.
-                  </p>
-                ) : null}
+                <Button
+                  asChild
+                  size="lg"
+                  className={cn(
+                    "mt-6 w-full",
+                    plan.featured
+                      ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+                      : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
+                  )}
+                  variant={plan.featured ? "default" : "outline"}
+                >
+                  <Link href={plan.href}>{plan.cta}</Link>
+                </Button>
 
                 <ul className="mt-8 space-y-3">
                   {plan.features.map((f) => (
                     <li
                       key={f}
-                      className={cn(
-                        "flex items-start gap-2.5 text-sm",
-                        plan.comingSoon ? "text-foreground/50" : "text-foreground/70"
-                      )}
+                      className="flex items-start gap-2.5 text-sm text-foreground/70"
                     >
-                      <Check
-                        className={cn(
-                          "mt-0.5 size-4 shrink-0",
-                          plan.comingSoon ? "text-[#06B6D4]/50" : "text-[#06B6D4]"
-                        )}
-                      />
+                      <Check className="mt-0.5 size-4 shrink-0 text-[#06B6D4]" />
                       {f}
                     </li>
                   ))}

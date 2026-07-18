@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 import {
   History,
   Clock,
@@ -205,7 +206,6 @@ export type PricingPlan = {
   cta: string;
   href: string;
   featured?: boolean;
-  comingSoon?: boolean;
   features: string[];
 };
 
@@ -230,13 +230,13 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     name: "Pro",
-    price: "$6",
-    period: "/month",
+    price: "Contact us",
     description: "For power users who work across multiple devices.",
-    cta: "Coming Soon",
-    href: "/#pricing",
+    cta: "Contact Us",
+    href: `mailto:${siteConfig.email.hello}?subject=${encodeURIComponent(
+      "CopyBrain Pro"
+    )}`,
     featured: true,
-    comingSoon: true,
     features: [
       "Everything in Free",
       "Cloud sync",
