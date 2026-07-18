@@ -1,14 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Download as DownloadIcon, Check } from "lucide-react";
+import { Download as DownloadIcon, Check, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { osIcons } from "@/components/icons/os-icons";
-import { downloads } from "@/lib/site-config";
+import { downloads, type DownloadAsset } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { trackDownload } from "@/lib/gtm";
+
+const WINDOWS_HELP_VIDEO_ID = "sppI2ObCctY";
 
 export function DownloadSection({
   showHeading = true,
@@ -17,6 +27,9 @@ export function DownloadSection({
   showHeading?: boolean;
   className?: string;
 }) {
+  const [pendingWindowsAsset, setPendingWindowsAsset] =
+    useState<DownloadAsset | null>(null);
+
   return (
     <section id="download" className={cn("relative py-24 sm:py-32 scroll-mt-24", className)}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -72,7 +85,7 @@ export function DownloadSection({
                         size="lg"
                         variant={asset.primary ? "default" : "outline"}
                         className={cn(
-                          "w-full justify-between",
+                          "h-auto w-full min-h-9 items-center whitespace-normal py-2",
                           asset.primary
                             ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
                             : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
@@ -81,21 +94,27 @@ export function DownloadSection({
                         <Link
                           href={asset.href}
                           download
-                          onClick={() =>
+                          onClick={(e) => {
+                            if (platform.id === "windows") {
+                              e.preventDefault();
+                              setPendingWindowsAsset(asset);
+                              return;
+                            }
                             trackDownload({
                               platform: platform.id,
                               file: asset.file,
                               label: asset.label,
-                            })
-                          }
+                            });
+                          }}
+                          className="flex w-full min-w-0 flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2"
                         >
-                          <span className="flex items-center gap-2">
-                            <DownloadIcon className="size-4" />
-                            {asset.label}
+                          <span className="flex min-w-0 items-center gap-2">
+                            <DownloadIcon className="size-4 shrink-0" />
+                            <span className="truncate">{asset.label}</span>
                           </span>
                           <span
                             className={cn(
-                              "font-mono text-[11px] font-normal",
+                              "min-w-0 truncate font-mono text-[11px] font-normal",
                               asset.primary
                                 ? "text-primary-foreground/70 group-hover:text-primary-foreground/90"
                                 : "text-foreground/50 group-hover:text-foreground/60"
@@ -106,6 +125,13 @@ export function DownloadSection({
                         </Link>
                       </Button>
                     ))}
+
+                    {platform.note ? (
+                      <p className="mt-1 flex items-start gap-1.5 text-xs leading-relaxed text-foreground/50">
+                        <Info className="mt-0.5 size-3.5 shrink-0" />
+                        {platform.note}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </RevealItem>
@@ -117,6 +143,67 @@ export function DownloadSection({
           Free forever on the core plan. No account required to download.
         </Reveal>
       </div>
+
+      <Dialog
+        open={pendingWindowsAsset !== null}
+        onOpenChange={(open) => {
+          if (!open) setPendingWindowsAsset(null);
+        }}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Seeing a Windows warning?</DialogTitle>
+            <DialogDescription>
+              CopyBrain isn&apos;t code-signed yet, so Windows SmartScreen may
+              flag the installer. Here&apos;s a quick walkthrough on how to
+              continue safely.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div
+            className="overflow-hidden rounded-xl border border-foreground/10"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${WINDOWS_HELP_VIDEO_ID}`}
+              title="How to run CopyBrain on Windows (SmartScreen warning)"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+          <p className="flex items-start gap-1.5 text-xs leading-relaxed text-foreground/50">
+            <Info className="mt-0.5 size-3.5 shrink-0" />
+            On the SmartScreen popup, click &quot;More info&quot; then &quot;Run
+            anyway&quot; to install.
+          </p>
+
+          {pendingWindowsAsset ? (
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground hover:opacity-90"
+            >
+              <a
+                href={pendingWindowsAsset.href}
+                download
+                onClick={() => {
+                  trackDownload({
+                    platform: "windows",
+                    file: pendingWindowsAsset.file,
+                    label: pendingWindowsAsset.label,
+                  });
+                  setPendingWindowsAsset(null);
+                }}
+              >
+                <DownloadIcon className="size-4" />
+                Continue download — {pendingWindowsAsset.file}
+              </a>
+            </Button>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

@@ -38,7 +38,11 @@ export type PlatformDownload = {
   assets: DownloadAsset[];
   version: string;
   size: string;
+  note?: string;
 };
+
+const RELEASE_BASE =
+  "https://github.com/zidniryi/copybrainapp/releases/download/v1.0.2";
 
 export const downloads: PlatformDownload[] = [
   {
@@ -46,19 +50,20 @@ export const downloads: PlatformDownload[] = [
     name: "Windows",
     icon: "windows",
     supports: ["Windows 10", "Windows 11", "Intel", "ARM64"],
-    version: "2.4.1",
-    size: "68 MB",
+    version: "1.0.2",
+    size: "3.8 MB",
+    note: 'Windows may show a SmartScreen warning since the app isn\'t code-signed yet. Click "More info" → "Run anyway" to continue.',
     assets: [
       {
         label: "Download for Windows",
-        file: "CopyBrain-Setup.exe",
-        href: "/downloads/CopyBrain-Setup.exe",
+        file: "CopyBrain_1.0.2_x64-setup.exe",
+        href: `${RELEASE_BASE}/CopyBrain_1.0.2_x64-setup.exe`,
         primary: true,
       },
       {
-        label: "Portable",
-        file: "CopyBrain-Portable.zip",
-        href: "/downloads/CopyBrain-Portable.zip",
+        label: "MSI Installer",
+        file: "CopyBrain_1.0.2_x64_en-US.msi",
+        href: `${RELEASE_BASE}/CopyBrain_1.0.2_x64_en-US.msi`,
       },
     ],
   },
@@ -67,14 +72,19 @@ export const downloads: PlatformDownload[] = [
     name: "macOS",
     icon: "apple",
     supports: ["Apple Silicon", "Intel"],
-    version: "2.4.1",
-    size: "54 MB",
+    version: "1.0.2",
+    size: "12.7 MB",
     assets: [
       {
         label: "Download for macOS",
-        file: "CopyBrain.dmg",
-        href: "/downloads/CopyBrain.dmg",
+        file: "CopyBrain_1.0.2_universal.dmg",
+        href: `${RELEASE_BASE}/CopyBrain_1.0.2_universal.dmg`,
         primary: true,
+      },
+      {
+        label: "Universal (tar.gz)",
+        file: "CopyBrain_universal.app.tar.gz",
+        href: `${RELEASE_BASE}/CopyBrain_universal.app.tar.gz`,
       },
     ],
   },
@@ -82,30 +92,25 @@ export const downloads: PlatformDownload[] = [
     id: "linux",
     name: "Linux",
     icon: "linux",
-    supports: ["AppImage", "deb", "rpm", "tar.gz"],
-    version: "2.4.1",
-    size: "61 MB",
+    supports: ["AppImage", "deb", "rpm"],
+    version: "1.0.2",
+    size: "80.8 MB",
     assets: [
       {
         label: "AppImage",
-        file: "CopyBrain-2.4.1.AppImage",
-        href: "/downloads/CopyBrain-2.4.1.AppImage",
+        file: "CopyBrain_1.0.2_amd64.AppImage",
+        href: `${RELEASE_BASE}/CopyBrain_1.0.2_amd64.AppImage`,
         primary: true,
       },
       {
         label: ".deb",
-        file: "copybrain_2.4.1_amd64.deb",
-        href: "/downloads/copybrain_2.4.1_amd64.deb",
+        file: "CopyBrain_1.0.2_amd64.deb",
+        href: `${RELEASE_BASE}/CopyBrain_1.0.2_amd64.deb`,
       },
       {
         label: ".rpm",
-        file: "copybrain-2.4.1.x86_64.rpm",
-        href: "/downloads/copybrain-2.4.1.x86_64.rpm",
-      },
-      {
-        label: ".tar.gz",
-        file: "copybrain-2.4.1-linux.tar.gz",
-        href: "/downloads/copybrain-2.4.1-linux.tar.gz",
+        file: "CopyBrain-1.0.2-1.x86_64.rpm",
+        href: `${RELEASE_BASE}/CopyBrain-1.0.2-1.x86_64.rpm`,
       },
     ],
   },
