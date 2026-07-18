@@ -44,6 +44,11 @@ export type PlatformDownload = {
 const RELEASE_BASE =
   "https://github.com/copybrainapp/copybrainapp-releases/releases/download/v1.0.4";
 
+export const sourceRelease = {
+  version: "1.0.4",
+  href: "https://github.com/copybrainapp/copybrainapp-releases/archive/refs/tags/v1.0.4.zip",
+};
+
 export const downloads: PlatformDownload[] = [
   {
     id: "windows",
