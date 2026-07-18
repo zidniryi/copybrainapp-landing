@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { GithubIcon } from "@/components/icons/github-icon";
 import { siteConfig } from "@/lib/site-config";
+import { trackDownloadCta } from "@/lib/gtm";
 
 const footerColumns = [
   {
@@ -68,6 +71,12 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
+                      onClick={
+                        link.label === "Download"
+                          ? () =>
+                              trackDownloadCta({ location: "footer", label: link.label })
+                          : undefined
+                      }
                       className="text-sm text-foreground/50 transition-colors hover:text-foreground"
                     >
                       {link.label}

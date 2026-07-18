@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { trackDownloadCta } from "@/lib/gtm";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +61,14 @@ export function Navbar() {
             asChild
             className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08)] hover:opacity-90"
           >
-            <Link href="/download">Download Now</Link>
+            <Link
+              href="/download"
+              onClick={() =>
+                trackDownloadCta({ location: "navbar_desktop", label: "Download Now" })
+              }
+            >
+              Download Now
+            </Link>
           </Button>
         </div>
 
@@ -99,7 +107,13 @@ export function Navbar() {
               asChild
               className="mt-2 w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white hover:opacity-90"
             >
-              <Link href="/download" onClick={() => setOpen(false)}>
+              <Link
+                href="/download"
+                onClick={() => {
+                  setOpen(false);
+                  trackDownloadCta({ location: "navbar_mobile", label: "Download Now" });
+                }}
+              >
                 Download Now
               </Link>
             </Button>

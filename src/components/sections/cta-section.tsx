@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Glow } from "@/components/glow";
 import { Reveal } from "@/components/motion/reveal";
+import { trackDownloadCta } from "@/lib/gtm";
 
 export function CtaSection() {
   return (
@@ -23,7 +26,12 @@ export function CtaSection() {
               size="lg"
               className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground shadow-[0_8px_30px_-8px_rgba(79,70,229,0.7)] hover:opacity-90"
             >
-              <Link href="/download">
+              <Link
+                href="/download"
+                onClick={() =>
+                  trackDownloadCta({ location: "cta_section", label: "Download Now" })
+                }
+              >
                 Download Now
                 <ArrowRight className="size-4" />
               </Link>

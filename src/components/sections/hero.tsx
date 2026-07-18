@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Grid2x2, Apple, Terminal, ArrowRight, Link as LinkIcon, KeyRound, Code2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Glow } from "@/components/glow";
+import { trackDownloadCta } from "@/lib/gtm";
 
 const floatingCards = [
   {
@@ -105,7 +106,12 @@ export function Hero() {
               size="lg"
               className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-primary-foreground shadow-[0_8px_30px_-8px_rgba(79,70,229,0.7)] hover:opacity-90"
             >
-              <Link href="/download#windows">
+              <Link
+                href="/download#windows"
+                onClick={() =>
+                  trackDownloadCta({ location: "hero", label: "Download for Windows" })
+                }
+              >
                 <Grid2x2 className="size-4" />
                 Download for Windows
               </Link>
@@ -116,7 +122,12 @@ export function Hero() {
               variant="outline"
               className="border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
             >
-              <Link href="/download#macos">
+              <Link
+                href="/download#macos"
+                onClick={() =>
+                  trackDownloadCta({ location: "hero", label: "Download for macOS" })
+                }
+              >
                 <Apple className="size-4" />
                 Download for macOS
               </Link>
@@ -127,7 +138,12 @@ export function Hero() {
               variant="outline"
               className="border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
             >
-              <Link href="/download#linux">
+              <Link
+                href="/download#linux"
+                onClick={() =>
+                  trackDownloadCta({ location: "hero", label: "Download for Linux" })
+                }
+              >
                 <Terminal className="size-4" />
                 Download for Linux
               </Link>
