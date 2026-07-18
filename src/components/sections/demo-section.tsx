@@ -1,8 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/motion/reveal";
-import { YoutubeEmbed } from "@/components/youtube-embed";
-
-const YOUTUBE_VIDEO_ID = "iTZC4QdZCuU";
+import { DemoVideoPlayer } from "@/components/demo-video-player";
 
 export function DemoSection() {
   return (
@@ -15,10 +13,9 @@ export function DemoSection() {
           className="mb-12"
         />
         <Reveal>
-          <YoutubeEmbed
-            videoId={YOUTUBE_VIDEO_ID}
+          <DemoVideoPlayer
+            src="/video/demo.mp4"
             poster="/video/demo-poster.jpg"
-            title="CopyBrain — Your Second Brain for Everything You Copy (Demo)"
             aspectRatio="960 / 628"
             className="mx-auto max-w-4xl"
           />

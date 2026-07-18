@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/sections/hero";
 import { DemoSection } from "@/components/sections/demo-section";
+import { ShowcaseSection } from "@/components/sections/showcase-section";
 import { DownloadSection } from "@/components/sections/download-section";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { TimelineDemo } from "@/components/sections/timeline-demo";
@@ -18,6 +19,7 @@ export default function Home() {
       <main className="relative min-h-screen bg-background">
         <Hero />
         <DemoSection />
+        <ShowcaseSection />
         <DownloadSection />
         <FeaturesSection />
         <TimelineDemo />
