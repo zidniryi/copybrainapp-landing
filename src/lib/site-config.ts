@@ -45,8 +45,7 @@ const RELEASE_BASE =
   "https://github.com/copybrainapp/copybrainapp-releases/releases/download/v1.0.5";
 
 export const sourceRelease = {
-  version: "1.0.5",
-  href: "https://github.com/copybrainapp/copybrainapp-releases/archive/refs/tags/v1.0.5.zip",
+  href: "https://github.com/copybrainapp/copybrainapp#building-production-binaries--installers",
 };
 
 export const downloads: PlatformDownload[] = [

@@ -159,8 +159,8 @@ export function DownloadSection({
                 Prefer to build it yourself?
               </h3>
               <p className="mt-1 text-sm text-foreground/55">
-                CopyBrain is open source. Download the source code and build
-                it manually if you&apos;d rather not use the prebuilt
+                CopyBrain is open source. Clone the repo and build it
+                manually if you&apos;d rather not use the prebuilt
                 installers.
               </p>
             </div>
@@ -171,16 +171,18 @@ export function DownloadSection({
             >
               <Link
                 href={sourceRelease.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() =>
                   trackDownload({
                     platform: "source",
-                    file: `copybrainapp-releases-${sourceRelease.version}.zip`,
-                    label: "Source code (.zip)",
+                    file: "build-instructions",
+                    label: "Build from source",
                   })
                 }
               >
-                <DownloadIcon className="size-4" />
-                Source code (v{sourceRelease.version})
+                <Code2 className="size-4" />
+                Build from source
               </Link>
             </Button>
           </div>
