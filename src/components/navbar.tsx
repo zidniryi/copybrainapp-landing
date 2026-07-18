@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { GithubIcon } from "@/components/icons/github-icon";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { trackDownloadCta } from "@/lib/gtm";
@@ -56,6 +57,15 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
+          <Link
+            href={siteConfig.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CopyBrain on GitHub"
+            className="flex size-9 items-center justify-center rounded-lg text-foreground/60 transition-colors hover:bg-foreground/5 hover:text-foreground"
+          >
+            <GithubIcon className="size-4" />
+          </Link>
           <ThemeToggle />
           <Button
             asChild
@@ -103,6 +113,16 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href={siteConfig.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 text-base font-medium text-foreground/80 hover:text-foreground"
+            >
+              <GithubIcon className="size-4" />
+              GitHub
+            </Link>
             <Button
               asChild
               className="mt-2 w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white hover:opacity-90"

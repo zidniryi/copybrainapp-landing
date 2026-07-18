@@ -10,7 +10,12 @@ Your second brain for everything you copy.
 
 Description
 
-CopyBrain automatically remembers everything you copy and organizes it into a searchable timeline.
+CopyBrain automatically remembers everything you copy and organizes it into a searchable timeline. The client is open source.
+
+Open Source
+
+CopyBrain's client is open source.
+Repository: https://github.com/copybrainapp
 
 Platforms
 

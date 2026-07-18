@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Grid2x2, Apple, Terminal, ArrowRight, Link as LinkIcon, KeyRound, Code2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Glow } from "@/components/glow";
+import { GithubIcon } from "@/components/icons/github-icon";
+import { siteConfig } from "@/lib/site-config";
 import { trackDownloadCta } from "@/lib/gtm";
 
 const floatingCards = [
@@ -50,15 +52,26 @@ export function Hero() {
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <div>
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/70"
+            className="flex flex-wrap items-center gap-2"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#06B6D4]" />
-            Now available for Windows, macOS &amp; Linux
-          </motion.span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/70">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#06B6D4]" />
+              Now available for Windows, macOS &amp; Linux
+            </span>
+            <Link
+              href={siteConfig.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/70 transition-colors hover:border-foreground/20 hover:text-foreground"
+            >
+              <GithubIcon className="size-3" />
+              Open Source
+            </Link>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -93,6 +106,7 @@ export function Hero() {
             <span>Private.</span>
             <span>Offline.</span>
             <span>Cross-platform.</span>
+            <span>Open source.</span>
           </motion.div>
 
           <motion.div

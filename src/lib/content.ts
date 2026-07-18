@@ -262,6 +262,11 @@ export const faqs: FaqItem[] = [
       "CopyBrain is a desktop clipboard manager that automatically saves everything you copy — text, code, links, and files — into a searchable timeline, so you can find anything you've ever copied in seconds.",
   },
   {
+    question: "Is CopyBrain open source?",
+    answer:
+      "Yes. CopyBrain's client is open source, so you can read the code, verify how your clipboard data is handled, or build it yourself instead of trusting an unsigned binary.",
+  },
+  {
     question: "Does it work offline?",
     answer:
       "Yes. CopyBrain is offline-first by design. Your clipboard history lives in a local, encrypted database on your machine and never requires an internet connection to work.",

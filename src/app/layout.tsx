@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s — CopyBrain",
   },
   description:
-    "CopyBrain is a modern clipboard timeline for Windows, macOS, and Linux. Automatically save everything you copy. Find clipboard history instantly with blazing-fast search. Private. Offline. Cross-platform.",
+    "CopyBrain is a modern, open source clipboard timeline for Windows, macOS, and Linux. Automatically save everything you copy. Find clipboard history instantly with blazing-fast search. Private. Offline. Cross-platform.",
   applicationName: "CopyBrain",
   keywords: [
     "clipboard manager",
@@ -46,6 +46,8 @@ export const metadata: Metadata = {
     "linux clipboard",
     "clipboard organizer",
     "clipboard backup",
+    "open source",
+    "open source clipboard manager",
   ],
   authors: [{ name: "CopyBrain" }],
   creator: "CopyBrain",
@@ -59,13 +61,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "CopyBrain",
     title: "CopyBrain",
-    description: "Your second brain for everything you copy.",
+    description: "Your second brain for everything you copy. Open source.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "CopyBrain",
-    description: "Your second brain for everything you copy.",
+    description: "Your second brain for everything you copy. Open source.",
   },
   robots: {
     index: true,
@@ -97,7 +99,8 @@ const jsonLd = {
   url: SITE_URL,
   applicationCategory: "ProductivityApplication",
   operatingSystem: "Windows, macOS, Linux",
-  description: "CopyBrain automatically remembers everything you copy.",
+  description:
+    "CopyBrain automatically remembers everything you copy. Open source.",
   downloadUrl: `${SITE_URL}/download`,
   offers: {
     "@type": "Offer",
