@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Download as DownloadIcon, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +8,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { osIcons } from "@/components/icons/os-icons";
 import { downloads } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { trackDownload } from "@/lib/gtm";
 
 export function DownloadSection({
   showHeading = true,
@@ -75,7 +78,17 @@ export function DownloadSection({
                             : "border-foreground/15 bg-foreground/5 text-foreground hover:bg-foreground/10"
                         )}
                       >
-                        <Link href={asset.href} download>
+                        <Link
+                          href={asset.href}
+                          download
+                          onClick={() =>
+                            trackDownload({
+                              platform: platform.id,
+                              file: asset.file,
+                              label: asset.label,
+                            })
+                          }
+                        >
                           <span className="flex items-center gap-2">
                             <DownloadIcon className="size-4" />
                             {asset.label}
