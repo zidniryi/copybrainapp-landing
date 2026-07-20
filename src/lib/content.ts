@@ -175,9 +175,10 @@ export const testimonials: Testimonial[] = [
     initials: "ZR",
   },
   {
-    name: "Asrofu N",
+    name: "A Niam",
     role: "Backend Developer",
-    quote: "Great app — does exactly what I need without getting in the way.",
+    quote:
+      "Overall, I feel this application has a lot of potential. Most of my feedback centers around privacy, security, and user trust, as I believe these will be the key factors in determining whether users feel comfortable adopting the application long-term. Before investing their time and trust, users generally want to feel confident that it's secure — once that trust is established, convenience becomes even more valuable, and I truly believe this is something you can achieve.",
     initials: "AN",
   },
 ];
