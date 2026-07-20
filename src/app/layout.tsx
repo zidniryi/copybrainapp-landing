@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { ThemeProvider, themeInitScript } from "@/components/theme-provider";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/json-ld";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const GTM_ID = "GTM-PH3Q7MGP";
@@ -20,7 +22,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://copybrainapp.xyz";
+const SITE_URL = siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -89,25 +91,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
+const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "CopyBrain",
-  url: SITE_URL,
-  applicationCategory: "ProductivityApplication",
-  operatingSystem: "Windows, macOS, Linux",
-  description:
-    "CopyBrain automatically remembers everything you copy. Open source.",
-  downloadUrl: `${SITE_URL}/download`,
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "CopyBrain",
-  },
+  "@graph": [organizationJsonLd, websiteJsonLd],
 };
 
 export default function RootLayout({
@@ -125,7 +111,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
       </head>
       <body className="font-sans antialiased bg-background text-foreground">

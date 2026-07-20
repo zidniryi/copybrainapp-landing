@@ -1,5 +1,9 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import {
+  softwareApplicationJsonLd,
+  faqPageJsonLd,
+} from "@/lib/json-ld";
 import { Hero } from "@/components/sections/hero";
 import { DemoSection } from "@/components/sections/demo-section";
 import { ShowcaseSection } from "@/components/sections/showcase-section";
@@ -12,9 +16,18 @@ import { PricingSection } from "@/components/sections/pricing-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaSection } from "@/components/sections/cta-section";
 
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [softwareApplicationJsonLd, faqPageJsonLd],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
+      />
       <Navbar />
       <main className="relative min-h-screen bg-background">
         <Hero />

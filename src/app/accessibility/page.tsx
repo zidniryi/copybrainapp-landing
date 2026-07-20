@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { LegalHero, LegalBody, LegalSection } from "@/components/legal";
 import { siteConfig } from "@/lib/site-config";
+import { breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -11,9 +12,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/accessibility" },
 };
 
+const jsonLd = breadcrumbJsonLd([
+  { name: "Accessibility", path: "/accessibility" },
+]);
+
 export default function AccessibilityPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="relative min-h-screen bg-background">
         <LegalHero

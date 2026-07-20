@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { LegalHero, LegalBody, LegalSection } from "@/components/legal";
 import { siteConfig } from "@/lib/site-config";
+import { breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Documentation",
@@ -12,9 +13,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/docs" },
 };
 
+const jsonLd = breadcrumbJsonLd([{ name: "Documentation", path: "/docs" }]);
+
 export default function DocsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="relative min-h-screen bg-background">
         <LegalHero

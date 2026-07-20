@@ -5,6 +5,7 @@ import { DownloadSection } from "@/components/sections/download-section";
 import { StatsSection } from "@/components/sections/stats-section";
 import { Glow } from "@/components/glow";
 import { Reveal } from "@/components/motion/reveal";
+import { breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Download",
@@ -13,9 +14,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/download" },
 };
 
+const jsonLd = breadcrumbJsonLd([{ name: "Download", path: "/download" }]);
+
 export default function DownloadPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="relative min-h-screen bg-background">
         <section className="relative overflow-hidden pt-40 pb-16 sm:pt-48">
