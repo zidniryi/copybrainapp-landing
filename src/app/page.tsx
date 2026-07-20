@@ -7,6 +7,7 @@ import { DownloadSection } from "@/components/sections/download-section";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { TimelineDemo } from "@/components/sections/timeline-demo";
 import { StatsSection } from "@/components/sections/stats-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaSection } from "@/components/sections/cta-section";
@@ -23,6 +24,7 @@ export default function Home() {
         <FeaturesSection />
         <TimelineDemo />
         <StatsSection />
+        <TestimonialsSection />
         <PricingSection />
         <FaqSection />
         <CtaSection />

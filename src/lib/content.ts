@@ -155,46 +155,30 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Marcus Chen",
-    role: "Senior Developer",
-    quote:
-      "I copy API keys, stack traces, and commands all day. CopyBrain's search finds anything from weeks ago in under a second — it's basically muscle memory now.",
-    initials: "MC",
+    name: "Hafid A",
+    role: "Mobile App Developer",
+    quote: "Really awesome. It's become part of my daily workflow.",
+    initials: "HA",
   },
   {
-    name: "Sofia Ramirez",
-    role: "Product Designer",
+    name: "Hanif P",
+    role: "SEO & Meta Ads Specialist",
     quote:
-      "The timeline view is genius. I can scroll back to exactly what I copied while researching a client brief three weeks ago without digging through old files.",
-    initials: "SR",
+      "Really helpful and a pleasure to use — makes managing everything I copy so much easier.",
+    initials: "HP",
   },
   {
-    name: "Aiden Park",
-    role: "Computer Science Student",
+    name: "Z Ridwan",
+    role: "Software Developer",
     quote:
-      "Between lecture notes, code snippets, and citations, my clipboard used to be chaos. Collections keep everything sorted by class, and it's completely free.",
-    initials: "AP",
+      "Really helpful and a pleasure to use. It's saved me a ton of time day to day.",
+    initials: "ZR",
   },
   {
-    name: "Priya Nair",
-    role: "QA Engineer",
-    quote:
-      "Logging repro steps used to mean fifteen browser tabs open at once. Now I just copy as I go and pull the whole sequence from the timeline when I file the bug.",
-    initials: "PN",
-  },
-  {
-    name: "Jonas Weber",
-    role: "Content Creator",
-    quote:
-      "Scripts, captions, links to assets — CopyBrain remembers all of it. Smart categories mean I never mix up a draft caption with a finished one again.",
-    initials: "JW",
-  },
-  {
-    name: "Hannah Wolfe",
-    role: "Office Manager",
-    quote:
-      "I'm not technical, but CopyBrain just works. Everything I copy from emails and spreadsheets is there when I need it, and it runs quietly in the background.",
-    initials: "HW",
+    name: "Asrofu N",
+    role: "Backend Developer",
+    quote: "Great app — does exactly what I need without getting in the way.",
+    initials: "AN",
   },
 ];
 
