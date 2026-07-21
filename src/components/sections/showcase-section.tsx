@@ -36,6 +36,7 @@ const platforms: {
   icon: "windows" | "apple" | "linux";
   primary: Shot;
   secondary: Shot;
+  overview: Shot;
 }[] = [
   {
     id: "windows",
@@ -52,6 +53,12 @@ const platforms: {
       width: 1536,
       height: 812,
       alt: "CopyBrain app details on Windows",
+    },
+    overview: {
+      src: "/screenshots/overview-v1.1.1.webp",
+      width: 1402,
+      height: 1122,
+      alt: "CopyBrain feature overview on Windows",
     },
   },
   {
@@ -70,6 +77,12 @@ const platforms: {
       height: 1840,
       alt: "CopyBrain app details on macOS",
     },
+    overview: {
+      src: "/screenshots/overview-v1.1.1.webp",
+      width: 1402,
+      height: 1122,
+      alt: "CopyBrain feature overview on macOS",
+    },
   },
   {
     id: "linux",
@@ -86,6 +99,12 @@ const platforms: {
       width: 1920,
       height: 1080,
       alt: "CopyBrain app details on Linux",
+    },
+    overview: {
+      src: "/screenshots/overview-v1.1.1.webp",
+      width: 1402,
+      height: 1122,
+      alt: "CopyBrain feature overview on Linux",
     },
   },
 ];
@@ -211,12 +230,40 @@ export function ShowcaseSection() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -18, scale: 0.97 }}
               transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2"
+              className="grid grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-3"
             >
               <TiltCard
                 initial={{ opacity: 0, x: -28, rotate: -3 }}
                 animate={{ opacity: 1, x: 0, rotate: 0 }}
-                transition={{ duration: 0.5, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+                transition={{ duration: 0.5, delay: 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] sm:col-span-2 lg:col-span-1"
+              >
+                <button
+                  type="button"
+                  onClick={() => setZoomedShot(activePlatform.overview)}
+                  className="group/zoom relative block w-full cursor-zoom-in"
+                >
+                  <Image
+                    src={activePlatform.overview.src}
+                    alt={activePlatform.overview.alt}
+                    width={activePlatform.overview.width}
+                    height={activePlatform.overview.height}
+                    sizes="(min-width: 1024px) 32vw, 100vw"
+                    className="h-full w-full object-cover"
+                    priority
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover/zoom:bg-black/30 group-hover/zoom:opacity-100">
+                    <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
+                      <ZoomIn className="size-5" />
+                    </span>
+                  </span>
+                </button>
+              </TiltCard>
+
+              <TiltCard
+                initial={{ opacity: 0, x: -14, y: 14 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16, ease: [0.21, 0.47, 0.32, 0.98] }}
                 className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]"
               >
                 <button
@@ -229,7 +276,7 @@ export function ShowcaseSection() {
                     alt={activePlatform.secondary.alt}
                     width={activePlatform.secondary.width}
                     height={activePlatform.secondary.height}
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1024px) 32vw, 100vw"
                     className="h-full w-full object-cover"
                   />
                   <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover/zoom:bg-black/30 group-hover/zoom:opacity-100">
@@ -243,7 +290,7 @@ export function ShowcaseSection() {
               <TiltCard
                 initial={{ opacity: 0, x: 28, rotate: 3 }}
                 animate={{ opacity: 1, x: 0, rotate: 0 }}
-                transition={{ duration: 0.5, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+                transition={{ duration: 0.5, delay: 0.24, ease: [0.21, 0.47, 0.32, 0.98] }}
                 className="overflow-hidden rounded-2xl border border-foreground/10 bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]"
               >
                 <button
@@ -256,9 +303,8 @@ export function ShowcaseSection() {
                     alt={activePlatform.primary.alt}
                     width={activePlatform.primary.width}
                     height={activePlatform.primary.height}
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1024px) 32vw, 100vw"
                     className="h-full w-full object-cover"
-                    priority
                   />
                   <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover/zoom:bg-black/30 group-hover/zoom:opacity-100">
                     <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
